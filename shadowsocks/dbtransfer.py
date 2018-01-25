@@ -100,6 +100,10 @@ class DbTransfer(object):
                     continue
                 if config.SS_VERBOSE:
                     logging.info('U[%s] User ID Obtained:%s' % (port, user))
+
+                if 5*1024 > dt_transfer[port]:
+                    continue
+                
                 tran = str(dt_transfer[port])
                 data = {'d': tran, 'node_id': config.NODE_ID, 'u': '0'}
                 url = config.API_URL + '/users/' + \
